@@ -7,11 +7,11 @@
 class CityGame {
 private:
     std::unordered_set<std::string> allCities = {
-        "London", "Berlin", "Paris", "Rome", "Madrid", "Chicago", "Eindhoven", "Glasgow", "Helsinki", "Warsaw", "Omsk", "Engels", "Москва",//<-нерабочая
+        "London", "Berlin", "Paris", "Rome", "Madrid", "Chicago", "Eindhoven", "Glasgow", "Helsinki", "Warsaw", "Omsk", "Engels", "РњРѕСЃРєРІР°",//<-РЅРµСЂР°Р±РѕС‡Р°СЏ
         "Oslo", "Prague", "Vienna", "Dublin", "Athens", "Moscow", "Arkhangelsk", "Florence", "Volgograd", "Neapol", "Istanbul", "Shanghai", "Kyiv", "Kharkiv", "Kazan",
     };
-    //у меня не получилось поставить кириллицу, т.к github с visual studio не распознают русские символы,
-    // в терминале он их видит как пустое значение ' ', попробуйте написать Москва в терминале, я пытался внедрить setlocale(LC_ALL, "ru"); но тоже не сработало
+    //Сѓ РјРµРЅСЏ РЅРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ РїРѕСЃС‚Р°РІРёС‚СЊ РєРёСЂРёР»Р»РёС†Сѓ, С‚.Рє github СЃ visual studio РЅРµ СЂР°СЃРїРѕР·РЅР°СЋС‚ СЂСѓСЃСЃРєРёРµ СЃРёРјРІРѕР»С‹,
+// РІ С‚РµСЂРјРёРЅР°Р»Рµ РѕРЅ РёС… РІРёРґРёС‚ РєР°Рє РїСѓСЃС‚РѕРµ Р·РЅР°С‡РµРЅРёРµ ' ', РїРѕРїСЂРѕР±СѓР№С‚Рµ РЅР°РїРёСЃР°С‚СЊ РњРѕСЃРєРІР° РІ С‚РµСЂРјРёРЅР°Р»Рµ, СЏ РїС‹С‚Р°Р»СЃСЏ РІРЅРµРґСЂРёС‚СЊ setlocale(LC_ALL, "ru"); РЅРѕ С‚РѕР¶Рµ РЅРµ СЃСЂР°Р±РѕС‚Р°Р»Рѕ
     std::unordered_set<std::string> usedCities;
 
     char currentLetter = '\0';
@@ -25,15 +25,15 @@ private:
 
 public:
     void start() {
-        std::cout << "Игра в города/ game called cities" << std::endl;
-        std::cout << "вводите название города начиная с прошлой последней буквы прошого ответа" << std::endl;
-        std::cout << "Напишите exit чтобы выйти с терминала\n" << std::endl;
+        std::cout << "РРіСЂР° РІ РіРѕСЂРѕРґР°/ game called cities" << std::endl;
+        std::cout << "РІРІРѕРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° РЅР°С‡РёРЅР°СЏ СЃ РїСЂРѕС€Р»РѕР№ РїРѕСЃР»РµРґРЅРµР№ Р±СѓРєРІС‹ РїСЂРѕС€РѕРіРѕ РѕС‚РІРµС‚Р°" << std::endl;
+        std::cout << "РќР°РїРёС€РёС‚Рµ exit С‡С‚РѕР±С‹ РІС‹Р№С‚Рё СЃ С‚РµСЂРјРёРЅР°Р»Р°\n" << std::endl;
 
         while (true) {
             if (currentLetter == '\0')
-                std::cout << "Вводите город/ put city here: ";
+                std::cout << "Р’РІРѕРґРёС‚Рµ РіРѕСЂРѕРґ/ put city here: ";
             else
-                std::cout << "Введите город начиная с буквы/ write down city that starts with letter '" << currentLetter << "': ";
+                std::cout << "Р’РІРµРґРёС‚Рµ РіРѕСЂРѕРґ РЅР°С‡РёРЅР°СЏ СЃ Р±СѓРєРІС‹/ write down city that starts with letter '" << currentLetter << "': ";
 
             std::string input;
             std::getline(std::cin, input);
@@ -42,7 +42,7 @@ public:
                 continue;
 
             if (input == "exit") {
-                std::cout << "проигрыш/ you lost" << std::endl;
+                std::cout << "РїСЂРѕРёРіСЂС‹С€/ you lost" << std::endl;
                 break;
             }
 
@@ -54,13 +54,13 @@ public:
         std::string normalizedCity = toLower(city);
 
         if (!isValidCity(normalizedCity)) {
-            std::cout << "введите другой город/ put other city\n";
+            std::cout << "РІРІРµРґРёС‚Рµ РґСЂСѓРіРѕР№ РіРѕСЂРѕРґ/ put other city\n";
             return;
         }
 
         usedCities.insert(normalizedCity);
         currentLetter = getNextLetter(normalizedCity);
-        std::cout << "Принято, введите следующий/ correct put another one: '" << currentLetter << "'\n\n";
+        std::cout << "РџСЂРёРЅСЏС‚Рѕ, РІРІРµРґРёС‚Рµ СЃР»РµРґСѓСЋС‰РёР№/ correct put another one: '" << currentLetter << "'\n\n";
     }
 
     bool isValidCity(const std::string& city) {
@@ -72,17 +72,17 @@ public:
             }
         }
         if (!exists) {
-            std::cout << "Этого города нет в списке allcities/ incorrect city, its not in allcities\n";
+            std::cout << "Р­С‚РѕРіРѕ РіРѕСЂРѕРґР° РЅРµС‚ РІ СЃРїРёСЃРєРµ allcities/ incorrect city, its not in allcities\n";
             return false;
         }
         if (usedCities.find(city) != usedCities.end()) {
-            std::cout << "Город не может быть повторно использован/ city cant be used twice\n";
+            std::cout << "Р“РѕСЂРѕРґ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРѕРІС‚РѕСЂРЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅ/ city cant be used twice\n";
             return false;
         }
         if (currentLetter != '\0') {
             char firstChar = std::tolower(static_cast<unsigned char>(city[0]));
             if (firstChar != std::tolower(currentLetter)) {
-                std::cout << "Город должен начинатся с../ city should begin with letter '" << currentLetter << "'!\n";
+                std::cout << "Р“РѕСЂРѕРґ РґРѕР»Р¶РµРЅ РЅР°С‡РёРЅР°С‚СЃСЏ СЃ../ city should begin with letter '" << currentLetter << "'!\n";
                 return false;
             }
         }
